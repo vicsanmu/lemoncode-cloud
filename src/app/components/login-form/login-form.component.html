@@ -1,0 +1,17 @@
+<form [formGroup]="form">
+  <mat-form-field >
+    <mat-label>Username</mat-label>
+    <input matInput [formControl]="username" required>
+    <mat-error *ngIf="username.invalid && username.touched">{{getErrorMessage(username)}}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput [formControl]="password" [type]="hide ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+    <mat-error *ngIf="password.invalid && password.touched">{{getErrorMessage(password)}}</mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="primary" class="login" [disabled]="!form.valid" type="submit" (click)="login()" (keyup.enter)="login()">Login</button>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+</form>

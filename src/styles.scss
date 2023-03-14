@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { 
+  height: 100%;
+}
+
+body { 
+  margin: 0; 
+}
+
+.text-center {
+  text-align: center;
+}
+
+.zoom-in {
+  zoom: 2;
+}
+
+.zoom-out {
+  zoom: 1;
+}
+
+app-public-header,
+app-private-header {
+  button.mdc-button.mat-mdc-button {
+    color: white;
+  }
+  
+  .header-title {
+    margin-right: 24px;
+  }
+}

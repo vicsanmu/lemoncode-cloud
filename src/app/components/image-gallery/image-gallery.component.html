@@ -1,0 +1,34 @@
+<div class="gallery-title">
+  <mat-icon>collections</mat-icon>
+  <h1 class="gallery-text">Gallery</h1>
+</div>
+
+<mat-divider></mat-divider>
+<div class="image-container">
+  <img class="gallery-huge-image"
+    rotate
+    [alt]="images[imagePositionSelected].title" 
+    [style.width]="getWidthImage()" 
+    [src]="images[imagePositionSelected].src">
+</div>
+
+<mat-divider></mat-divider>
+<div class="images-list">
+  <button *ngIf="startItemPage !== 0" mat-raised-button (click)="previousPage()">Previous</button>
+  <div class="image-item" *ngFor="let item of images | slice:startItemPage:endItemPage; let i = index">
+    <img class="gallery-small-image {{getClassIfImageIsSelected(item.id)}}"
+         [src]="item.src"
+         [alt]="item.title"
+         (click)="selectImage(item.id)">
+  </div>
+  <button *ngIf="endItemPage < images.length" mat-raised-button (click)="nextPage()">Next</button>
+</div>
+
+<div class="gallery-buttons">
+  <button mat-raised-button color="primary" (click)="previousImage()">Previous</button>
+  <button *ngIf="!isPlaying" mat-raised-button color="primary" (click)="play()">Play</button>
+  <button *ngIf="isPlaying" mat-raised-button color="primary" (click)="stop()">Stop</button>
+  <button mat-raised-button color="primary" (click)="nextImage()">Next</button>
+  <button mat-raised-button color="primary" (click)="zoomIn()">Zoom In</button>
+  <button mat-raised-button color="primary" (click)="zoomOut()">Zoom Out</button>
+</div>
